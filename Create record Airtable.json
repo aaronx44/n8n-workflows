@@ -1,0 +1,149 @@
+{
+  "name": "Create record Airtable",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Order",
+        "formDescription": "What shoes do you like?",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your Name",
+              "placeholder": "type your name here",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "What shoes do you like?",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Dunk SB"
+                  },
+                  {
+                    "option": "Jordan 1"
+                  },
+                  {
+                    "option": "Onitsuka Tiger"
+                  }
+                ]
+              },
+              "multiselect": true,
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        460,
+        120
+      ],
+      "id": "8dc1fd9d-9a22-47bd-880f-b9cf699af9d8",
+      "name": "On form submission",
+      "webhookId": "699e085e-7da8-4d50-b783-9934b977b3d5"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "apph0BVHpO2ITWsun",
+          "mode": "list",
+          "cachedResultName": "Sneaker Repclub",
+          "cachedResultUrl": "https://airtable.com/apph0BVHpO2ITWsun"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblaZVxT7dllP5YUy",
+          "mode": "list",
+          "cachedResultName": "Orders Table",
+          "cachedResultUrl": "https://airtable.com/apph0BVHpO2ITWsun/tblaZVxT7dllP5YUy"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json['Your Name'] }}",
+            "Orders": "={{ $json['What shoes do you like?'][0] }}, {{ $json['What shoes do you like?'][1] }} ,{{ $json['What shoes do you like?'][2] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Orders",
+              "displayName": "Orders",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        120
+      ],
+      "id": "3f3406a0-362c-43a0-b2e2-0448970dad26",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "s09cCluw1CZUVzIx",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create a record": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Asia/Manila",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "40a8c822-ab3b-4136-82eb-6f3de968d441",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd2a891236c23e750f8d1637f33857c6c504273c6040340b09e6cb7eb0ff8137"
+  },
+  "id": "Xek6ESrAc6lS2mj0",
+  "tags": []
+}

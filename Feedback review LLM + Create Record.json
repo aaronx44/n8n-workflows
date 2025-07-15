@@ -1,0 +1,180 @@
+{
+  "name": "Feedback review LLM + Create Record",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Send us a feedback",
+        "formDescription": "Share your experience",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your feedback",
+              "placeholder": "Share your experience",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.2,
+      "position": [
+        -220,
+        -20
+      ],
+      "id": "ae4c7426-be9c-43ff-99de-ce7472e7e86a",
+      "name": "On form submission",
+      "webhookId": "9034081a-853b-4444-b375-80f93d4b39f6"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json[\"Your feedback\"] }}",
+        "messages": {
+          "messageValues": [
+            {
+              "type": "AIMessagePromptTemplate",
+              "message": "Your task is to determine which is appropriate return in the following : \n\nPositive\nNegative\nNeutral\n\nReturn 1 word only"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        0,
+        -20
+      ],
+      "id": "032c2f3d-1bc3-4c99-9056-1eb14bb7483d",
+      "name": "Basic LLM Chain"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -140,
+        200
+      ],
+      "id": "c10a31e9-2d01-419b-889f-b286b2e6cd85",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "EndTcpfwGqtqOw7w",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "apph0BVHpO2ITWsun",
+          "mode": "list",
+          "cachedResultName": "Sneaker Repclub",
+          "cachedResultUrl": "https://airtable.com/apph0BVHpO2ITWsun"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl1jKZGyt41QgzeI",
+          "mode": "list",
+          "cachedResultName": "Sentiment Table",
+          "cachedResultUrl": "https://airtable.com/apph0BVHpO2ITWsun/tbl1jKZGyt41QgzeI"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [
+            "Feedback"
+          ],
+          "schema": [
+            {
+              "id": "Feedback",
+              "displayName": "Feedback",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        360,
+        -20
+      ],
+      "id": "2ecd7e8e-22e8-4d97-b1d6-3dcef14144ca",
+      "name": "Create a record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "s09cCluw1CZUVzIx",
+          "name": "Airtable Personal Access Token account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Basic LLM Chain",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Basic LLM Chain": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "f1bb6b4a-2924-4877-af01-29aa6da5f5c5",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd2a891236c23e750f8d1637f33857c6c504273c6040340b09e6cb7eb0ff8137"
+  },
+  "id": "vyguL1fwKzirA0Jd",
+  "tags": []
+}

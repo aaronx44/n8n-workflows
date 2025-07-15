@@ -1,0 +1,126 @@
+{
+  "name": "Image download",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "=https://xcimg.szwego.com/img/780e8af5/20250709/i1752002640_4158_6.jpg",
+        "allowUnauthorizedCerts": true,
+        "responseFormat": "file",
+        "options": {
+          "batchSize": 50,
+          "fullResponse": false
+        },
+        "queryParametersUi": {
+          "parameter": [
+            {}
+          ]
+        }
+      },
+      "name": "Download Image",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        280,
+        60
+      ],
+      "id": "988b764a-710c-4ce8-be1c-2a54cd45f8ba"
+    },
+    {
+      "parameters": {
+        "fileName": "C:\\\\N8n\\\\example.jpg",
+        "options": {
+          "append": false
+        }
+      },
+      "name": "Save Image",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [
+        480,
+        60
+      ],
+      "id": "0cd64ef3-1eca-495c-b099-1d673e613676",
+      "alwaysOutputData": false,
+      "notesInFlow": false
+    },
+    {
+      "parameters": {
+        "url": "https://a202312270922439612001588.szwego.com/weshop/store/_doWqfXZxZPU1ggUkTBhADyrtHkd0QztkLfeQ2tw",
+        "allowUnauthorizedCerts": true,
+        "responseFormat": "string",
+        "options": {}
+      },
+      "name": "HTTP Request1",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [
+        60,
+        60
+      ],
+      "id": "175e6f78-715b-4c87-b48e-2cf048dca7dc"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -160,
+        60
+      ],
+      "id": "f011d2a9-472c-48ee-9f2e-546dc68344e6",
+      "name": "When clicking ‘Execute workflow’"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Download Image": {
+      "main": [
+        [
+          {
+            "node": "Save Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Download Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Image": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "31d781ba-db35-45d1-aaf7-9c8354dfc7bd",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd2a891236c23e750f8d1637f33857c6c504273c6040340b09e6cb7eb0ff8137"
+  },
+  "id": "aNHuDEsZeUtC1qDh",
+  "tags": []
+}

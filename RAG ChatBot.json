@@ -1,0 +1,237 @@
+{
+  "name": "RAG ChatBot",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "6f7685c3-c6aa-4ada-9830-68f947d8b09a",
+      "name": "When chat message received",
+      "webhookId": "95c929dd-8a26-4d86-8a22-12e9e54f4bd8"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "=You are an AI Assitant specialized in Oracle Utitlities Framework Application.\n\nYour primary task is to answer questions accurately and precisely using vector database, which contains relevant documents (Lesson 13).\n\nOnly provide information that you retrieve from the docuemnts (or verified expert knowledge).\n\nIf something is not included in the dataset or unclear, clearly state that you dont have sufficient information.\n\nStructure of your response :\n- COnside and to the point\n- Specific facts when available\n- Clearly indicate information from vector database\n\nObjective :\nprovide users with reliable and quick insights"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2,
+      "position": [
+        220,
+        0
+      ],
+      "id": "0f735ace-3ba6-4970-8b22-f929ac96466b",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o",
+          "mode": "list",
+          "cachedResultName": "gpt-4o"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        20,
+        220
+      ],
+      "id": "d0ef5fca-4d17-4db1-b721-53619983576d",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "EndTcpfwGqtqOw7w",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        180,
+        220
+      ],
+      "id": "fdb7adda-4f86-4099-a621-f56292d374a0",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "description": "Answer question"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        360,
+        220
+      ],
+      "id": "0081f163-c233-49b9-a529-10556a22d44e",
+      "name": "Answer questions with a vector store"
+    },
+    {
+      "parameters": {
+        "memoryKey": {
+          "__rl": true,
+          "mode": "list",
+          "value": "vector_store_key"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
+      "typeVersion": 1.3,
+      "position": [
+        100,
+        380
+      ],
+      "id": "2828b91a-ba9a-4a5e-b8bf-d6ac959cdfee",
+      "name": "Simple Vector Store"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        180,
+        600
+      ],
+      "id": "2b0f18c0-3d7f-430b-acf3-174169ef8da3",
+      "name": "Embeddings OpenAI",
+      "credentials": {
+        "openAiApi": {
+          "id": "EndTcpfwGqtqOw7w",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "gpt-4.1-mini"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        500,
+        360
+      ],
+      "id": "00abbf02-3d25-4e7e-9621-fb865e75c006",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "EndTcpfwGqtqOw7w",
+          "name": "OpenAi account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Answer questions with a vector store": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Simple Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Answer questions with a vector store",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "c1e5a45d-01b7-43de-9067-40551b1ffb47",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "cd2a891236c23e750f8d1637f33857c6c504273c6040340b09e6cb7eb0ff8137"
+  },
+  "id": "IO2T7zRBQyB2mK9m",
+  "tags": []
+}
