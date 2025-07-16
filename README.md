@@ -3,7 +3,7 @@
  ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
 
 <h2>Description</h2>
-Here are some of my n8n workflows
+This page is for my n8n automation workflows
 <br />
 
 
@@ -23,7 +23,7 @@ Here are some of my n8n workflows
 
 <p align="center">
 Launch the utility: <br/>
-<img src="[https://i.imgur.com/62TgaWL.png](https://imgur.com/a/KywLq7u)" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/a/KywLq7u" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 Select the disk:  <br/>
