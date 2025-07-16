@@ -23,7 +23,7 @@ This page is for my n8n automation workflows
 
 <p align="center">
 Launch the utility: <br/>
-<img src="https://imgur.com/a/KywLq7u" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<img src="https://imgur.com/icqgeSh" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 <br />
 <br />
 
