@@ -22,9 +22,8 @@ This page is for my n8n automation workflows
 <h2>Workflow Walkthrough</h2>
 
 <p align="center">
-Launch the utility: <br/>
-<img src="https://imgur.com/icqgeSh" height="80%" width="80%" alt="n8n"/>
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/KywLq7u"  ><a href="//imgur.com/a/KywLq7u">AI Automation Workflows</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+N8N Workflows: <br/>
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/KywLq7u"  ><a href="//imgur.com/a/KywLq7u">AI Automation Workflows</a></blockquote>
 <br />
 <br />
 
