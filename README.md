@@ -25,7 +25,7 @@ This page is for my n8n automation workflows
 N8N Workflows: <br/>
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/KywLq7u"  ><a href="//imgur.com/a/KywLq7u">AI Automation Workflows</a></blockquote>
 
-<img src="https://imgur.com/a/ai-automation-workflows-KywLq7u" alt="Description of image" width="300" height="200">
+<img src="https://i.imgur.com/icqgeSh.png" alt="Description of image" width="300" height="200">
 
 <br />
 <br />
