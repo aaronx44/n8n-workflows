@@ -24,6 +24,7 @@ This page is for my n8n automation workflows
 <p align="center">
 Launch the utility: <br/>
 <img src="https://imgur.com/icqgeSh" height="80%" width="80%" alt="Disk Sanitization Steps"/>
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/KywLq7u"  ><a href="//imgur.com/a/KywLq7u">AI Automation Workflows</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 <br />
 <br />
 
