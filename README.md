@@ -25,9 +25,8 @@ This page is for my n8n automation workflows
 N8N Workflows: <br/>
 <blockquote class="imgur-embed-pub" lang="en" data-id="a/KywLq7u"  ><a href="//imgur.com/a/KywLq7u">AI Automation Workflows</a></blockquote>
 
-<a href="https://imgur.com/a/ai-automation-workflows-KywLq7u">
-  <img src="image.jpg" alt="Clickable Image">
-</a>
+<img src="https://imgur.com/a/ai-automation-workflows-KywLq7u" alt="Description of image" width="300" height="200">
+
 <br />
 <br />
 
