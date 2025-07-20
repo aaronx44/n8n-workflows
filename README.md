@@ -27,8 +27,6 @@ N8N Workflows: <br/>
 
 <img src="https://i.imgur.com/icqgeSh.png" alt="Description of image" width="300" height="200">
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/iEv9rzN"  ><a href="//imgur.com/a/iEv9rzN">Web URL Scraper</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
-
 <br />
 <br />
 
