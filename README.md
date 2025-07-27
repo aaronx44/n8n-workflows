@@ -1,7 +1,5 @@
 <h1>n8n Workflows</h1>
 
- ### [YouTube Demonstration](https://youtu.be/7eJexJVCqJo)
-
 <h2>Description</h2>
 This page is for my n8n automation workflows
 <br />
