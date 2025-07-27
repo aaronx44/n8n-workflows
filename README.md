@@ -9,14 +9,16 @@ This page is for my n8n automation workflows
 
 <h2>Tools used</h2>
 
-- <b>LLM</b> 
 - <b>Airtable</b>
 - <b>OpenAI</b>
-- <b>Claude 4</b>
+- <b>Claude 4, OpenAI, Anthropic</b>
 - <b>Gmail</b>
-- <b>Whatsapp API</b>
+- <b>Whatsapp API , Instagram, Facebook</b>
 - <b>Pinecone</b>
 - <b>AI Agent</b>
+- <b>BlandAI</b>
+- <b>ElevenLabs</b>
+- <b>Make.com</b>
 
 
 <h2>Workflow Walkthrough</h2>
